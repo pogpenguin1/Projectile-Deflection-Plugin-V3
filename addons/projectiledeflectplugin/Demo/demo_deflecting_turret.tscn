@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3vlkjlo6xv3y"]
+
+[ext_resource type="Script" uid="uid://chqdycg7dv6l6" path="res://addons/projectiledeflectplugin/Scripts/demo_deflecting_turret.gd" id="1_1rifg"]
+[ext_resource type="Texture2D" uid="uid://d30ochdrx015k" path="res://addons/projectiledeflectplugin/SampleAssets/deflecting_turret_demo.png" id="1_seswt"]
+[ext_resource type="Script" uid="uid://bf5k2ocvs1emr" path="res://addons/projectiledeflectplugin/Scripts/deflector_2d.gd" id="2_1rifg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyvx"]
+size = Vector2(15.4476, 14.2136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5js0"]
+size = Vector2(6.29961, 20)
+
+[node name="DeflectingTurret" type="StaticBody2D"]
+script = ExtResource("1_1rifg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.101524, 0)
+texture = ExtResource("1_seswt")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.352793, 1.23343)
+shape = SubResource("RectangleShape2D_3vyvx")
+
+[node name="FiringMuzzle" type="Marker2D" parent="."]
+position = Vector2(-11.4673, -1.87849)
+
+[node name="Deflector2D" type="Area2D" parent="." groups=["enemies"]]
+position = Vector2(3.50877, 0)
+script = ExtResource("2_1rifg")
+deflect_cooldown = 0.0
+deflect_window = 4.0
+always_deflect_when_enabled = true
+speed_mode = 0
+new_team_id = 1
+metadata/_custom_type_script = "uid://bf5k2ocvs1emr"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deflector2D"]
+position = Vector2(-10.8153, -1.11518)
+shape = SubResource("RectangleShape2D_k5js0")

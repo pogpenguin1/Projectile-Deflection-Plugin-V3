@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgkskxnkmf7xf"]
+
+[ext_resource type="Script" uid="uid://bmgennefv1cul" path="res://addons/projectiledeflectplugin/Scripts/deflectable_projectile_2d.gd" id="1_myfj1"]
+[ext_resource type="Texture2D" uid="uid://cut0qrmvhhk2k" path="res://addons/projectiledeflectplugin/SampleAssets/1_projectilesample.png" id="2_7fyn1"]
+[ext_resource type="Texture2D" uid="uid://dxxaotu1ghs2o" path="res://addons/projectiledeflectplugin/SampleAssets/2_projectilesample.png" id="2_17nn4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17nn4"]
+radius = 3.60555
+
+[node name="DemoProjectile" type="Area2D" groups=["deflectable"]]
+script = ExtResource("1_myfj1")
+max_deflections = 0
+enable_speed_stacking = true
+speed_multiplier_per_deflect = 1.0
+deflect_damage_multiplier = 1.0
+damage_increases_per_deflect = true
+homing_strength = 50.0
+homing_target_group = &"enemies"
+homing_mode = 1
+enable_team_tint = true
+friendly_team_id = 0
+enable_sprite_swap_on_deflect = true
+deflected_texture = ExtResource("2_7fyn1")
+metadata/_custom_type_script = "uid://bmgennefv1cul"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_17nn4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5891, -0.271889)
+scale = Vector2(1.52382, 0.92628)
+shape = SubResource("CircleShape2D_17nn4")

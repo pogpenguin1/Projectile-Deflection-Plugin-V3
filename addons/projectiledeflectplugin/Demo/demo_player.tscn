@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvnheil36myxk"]
+
+[ext_resource type="Script" uid="uid://ck1156tq84mcb" path="res://addons/projectiledeflectplugin/Scripts/demo_player.gd" id="1_dwooc"]
+[ext_resource type="Texture2D" uid="uid://tckrpiu8njjs" path="res://addons/projectiledeflectplugin/SampleAssets/player_demo.png" id="1_uefla"]
+[ext_resource type="Script" uid="uid://bf5k2ocvs1emr" path="res://addons/projectiledeflectplugin/Scripts/deflector_2d.gd" id="2_dwooc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aky7f"]
+height = 40.8207
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aky7f"]
+size = Vector2(2.83053, 15.8745)
+
+[node name="DemoPlayer" type="CharacterBody2D"]
+script = ExtResource("1_dwooc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2, 0)
+zoom = Vector2(3.2, 3.2)
+limit_left = -183
+limit_right = 377
+position_smoothing_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.12608, 0.378236)
+scale = Vector2(0.5, 0.4)
+shape = SubResource("CapsuleShape2D_aky7f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.153763, 0.141212)
+texture = ExtResource("1_uefla")
+hframes = 2
+
+[node name="Deflector2D" type="Area2D" parent="."]
+position = Vector2(-0.229233, 0.286543)
+script = ExtResource("2_dwooc")
+deflect_window = 0.2
+deflect_delay = 0.3
+new_team_id = 0
+metadata/_custom_type_script = "uid://bf5k2ocvs1emr"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deflector2D"]
+position = Vector2(6.15081, -0.159413)
+shape = SubResource("RectangleShape2D_aky7f")

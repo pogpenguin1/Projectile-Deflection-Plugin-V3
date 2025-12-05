@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf0ggrcy0560t"]
+
+[ext_resource type="Script" uid="uid://bh1vwgx8osj5y" path="res://addons/projectiledeflectplugin/Scripts/demo_turret.gd" id="1_ph62d"]
+[ext_resource type="Texture2D" uid="uid://uevj3qx6dxft" path="res://addons/projectiledeflectplugin/SampleAssets/turret_demo.png" id="1_ywl7g"]
+[ext_resource type="PackedScene" uid="uid://dgkskxnkmf7xf" path="res://addons/projectiledeflectplugin/Demo/demo_projectile.tscn" id="2_hs8ei"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph62d"]
+size = Vector2(16.2441, 14.029)
+
+[node name="DemoTurret" type="StaticBody2D" groups=["enemies"]]
+script = ExtResource("1_ph62d")
+projectile_scene = ExtResource("2_hs8ei")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ywl7g")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.122665, 1.18213)
+shape = SubResource("RectangleShape2D_ph62d")
+
+[node name="FiringMuzzle" type="Marker2D" parent="."]
+position = Vector2(-13.7521, -2.12281)
